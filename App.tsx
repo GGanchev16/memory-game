@@ -4,11 +4,7 @@ import { Screen } from "./src/components";
 import { Game, SelectLevel } from "./src/blocks";
 import { ILevel } from "./src/types";
 
-const LEVELS: ILevel[] = [
-  { label: "Easy", value: "easy", matrix: [2, 4] },
-  { label: "Medium", value: "medium", matrix: [3, 4] },
-  { label: "Hard", value: "hard", matrix: [4, 4] },
-];
+import { LEVELS, AVAILABLE_IMAGES } from "./config/gameConfig";
 
 export default function App() {
   const [selectedLevel, setSelectedLevel] = useState<ILevel | null>(null);
@@ -19,13 +15,17 @@ export default function App() {
 
   return (
     <Screen>
-      {!selectedLevel ? (
+      {selectedLevel === null ? (
         <SelectLevel
           levels={LEVELS}
           handleSelectDifficulty={handleSelectDifficulty}
         />
       ) : (
-        <Game setSelectedLevel={setSelectedLevel} />
+        <Game
+          selectedLevel={selectedLevel}
+          setSelectedLevel={setSelectedLevel}
+          availableImages={AVAILABLE_IMAGES}
+        />
       )}
     </Screen>
   );
