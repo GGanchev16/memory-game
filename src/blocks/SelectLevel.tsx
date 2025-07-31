@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Text, StyleSheet, View } from "react-native";
 
 import { Button } from "../components";
 import { ILevel } from "../types";
@@ -13,7 +13,8 @@ export const SelectLevel = ({
   handleSelectDifficulty,
 }: SelectLevelProps) => {
   return (
-    <View style={{ gap: 16 }}>
+    <View style={styles.container}>
+      <Text style={styles.title}>Select Difficulty Level:</Text>
       {levels.map((level) => (
         <Button
           key={level.value}
@@ -24,3 +25,19 @@ export const SelectLevel = ({
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingBottom: 150,
+    gap: 16,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#373737",
+    textAlign: "center",
+    marginBottom: 20,
+  },
+});
