@@ -18,16 +18,17 @@ export const Screen = ({ children }: ScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#373737",
+    backgroundColor: "#fff",
   },
   text: {
     fontSize: 28,
     fontWeight: "bold",
-    color: "#fff",
+    color: "#373737",
     textAlign: "center",
     marginVertical: 20,
   },
   contentContainer: {
     paddingHorizontal: 20,
+    flex: 1,
   },
 });
