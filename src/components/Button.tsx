@@ -20,7 +20,7 @@ export const Button = ({
 
 const styles = StyleSheet.create({
   button: {
-    borderColor: "#fff",
+    borderColor: "#373737",
     borderWidth: 1,
     borderRadius: 16,
     paddingVertical: 10,
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    color: "#fff",
+    color: "#373737",
     textAlign: "center",
   },
 });
