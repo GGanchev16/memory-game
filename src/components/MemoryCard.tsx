@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   },
   cardBackText: {
     color: "#373737",
-    fontSize: 12,
+    fontSize: 14,
     fontWeight: "500",
   },
 });
