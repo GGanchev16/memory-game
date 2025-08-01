@@ -36,7 +36,7 @@ export const Game = ({
     initializeGame();
   }, [initializeGame]);
 
-  const handleCardMatching = useCallback((card1: GridItem, card2: GridItem) => {
+  const handleCardMatching = (card1: GridItem, card2: GridItem) => {
     const isMatch = card1.imageId === card2.imageId;
 
     if (isMatch) {
@@ -64,7 +64,7 @@ export const Game = ({
         setCanFlip(true);
       }, GAME_TIMING.NO_MATCH_DELAY);
     }
-  }, []);
+  };
 
   useEffect(() => {
     if (flippedCards.length === 2) {
@@ -83,40 +83,34 @@ export const Game = ({
     }
   }, [gameItems, isGameWon]);
 
-  const handleCardPress = useCallback(
-    (itemId: string) => {
-      if (!canFlip || flippedCards.length >= 2) return;
+  const handleCardPress = (itemId: string) => {
+    if (!canFlip || flippedCards.length >= 2) return;
 
-      const item = gameItems.find((i) => i.id === itemId);
-      if (!item || item.isFlipped || item.isMatched) return;
+    const item = gameItems.find((i) => i.id === itemId);
+    if (!item || item.isFlipped || item.isMatched) return;
 
-      setGameItems((prev) =>
-        prev.map((i) => (i.id === itemId ? { ...i, isFlipped: true } : i))
-      );
+    setGameItems((prev) =>
+      prev.map((i) => (i.id === itemId ? { ...i, isFlipped: true } : i))
+    );
 
-      setFlippedCards((prev) => [...prev, { ...item, isFlipped: true }]);
-    },
-    [canFlip, flippedCards.length, gameItems]
-  );
+    setFlippedCards((prev) => [...prev, { ...item, isFlipped: true }]);
+  };
 
-  const handleExit = useCallback(() => {
+  const handleExit = () => {
     setSelectedLevel(null);
-  }, [setSelectedLevel]);
+  };
 
-  const renderMemoryCard = useCallback(
-    (item: GridItem, index: number) => {
-      return (
-        <MemoryCard
-          key={item.id}
-          item={item}
-          onPress={handleCardPress}
-          canFlip={canFlip}
-          imageMap={IMAGE_MAP}
-        />
-      );
-    },
-    [canFlip, handleCardPress]
-  );
+  const renderMemoryCard = (item: GridItem, index: number) => {
+    return (
+      <MemoryCard
+        key={item.id}
+        item={item}
+        onPress={handleCardPress}
+        canFlip={canFlip}
+        imageMap={IMAGE_MAP}
+      />
+    );
+  };
 
   return (
     <View style={styles.container}>
